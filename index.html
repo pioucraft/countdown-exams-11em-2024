@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown</title>
+    
+</head>
+<body>
+    <div>
+        <h1 id="title">Les examens sont dans :</h1>
+        <h2 id="date"></h2>
+    </div>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            background-image: url(background.jpg);
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 35vh;
+            background-color: white;
+            padding: 3%;
+            border-radius: 5vh;
+            width: 50rem;
+        }
+    </style>
+    <script>
+        setInterval(() => {
+            let date = new Date()
+            let exams = new Date("2024-6-3")
+            let miliseconds = (exams-date)
+            let seconds = miliseconds/1000
+            let minutes = seconds/60
+            let hours = minutes/60
+            let days = hours/24
+            
+            days = Math.floor(days)
+            hours = Math.floor(hours-days*24)
+            minutes = Math.floor(minutes-hours*60-days*24*60)
+            seconds = Math.floor(seconds-minutes*60-hours*60*60-days*24*60*60)
+            miliseconds = Math.floor(miliseconds-seconds*1000-minutes*60*1000-hours*60*60*1000-days*24*60*60*1000)
+
+            document.getElementById("date").innerHTML = days + " jours, " + hours + " heures, " + minutes + " minutes, " + seconds + " secondes et " + miliseconds + " milisecondes"
+        }, 1);
+        
+    </script>
+</body>
+</html>
